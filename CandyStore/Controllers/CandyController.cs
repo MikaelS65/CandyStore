@@ -15,7 +15,7 @@ namespace CandyStore.Controllers
         public CandyController(ICandyRepository candyRepository, ICategoryRepository categoryRepository)
         {
             _candyRepository = candyRepository;
-            _categoryRepository = candyRepository;
+            _categoryRepository = categoryRepository;
         }
     }
 }
