@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CandyStore.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -17,6 +18,8 @@ namespace CandyStore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();     //Support for MVC
+            services.AddScoped<ICategoryRepository, CategoryRepository>();  //Our custom service
+            services.AddScoped<ICandyRepository, CandyRepository>();    //Our custom service
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
