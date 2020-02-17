@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace CandyStore.Models
 {
-    private readonly ICategoryRepository _categoryRepository = new CategoryRepository();    //Needed since we have the
-                                                                        //Category as a property in our Candy
     public class CandyRepository : ICandyRepository
     {
+        private readonly ICategoryRepository _categoryRepository = new CategoryRepository();    //Needed since we have the
+                                                                                                //Category as a property in our Candy
         public IEnumerable<Candy> GetAllCandy => new List<Candy>
         {
             new Candy {CandyId = 1, Name="Assorted Hard Candy", Price = 4.95M, Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", Category = _categoryRepository.GetAllCategories.ToList()[0], ImageUrl="https://upload.wikimedia.org/wikipedia/commons/1/13/HardCandy.jpg",IsInStock=true,IsOnSale=false,ImageThumbnailUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/HardCandy.jpg/220px-HardCandy.jpg"},
