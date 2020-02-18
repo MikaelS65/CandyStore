@@ -1,4 +1,5 @@
-﻿@model IEnumerable<CandyStore.Models.Candy>
+﻿@*@model IEnumerable<CandyStore.Models.Candy>*@
+@model CandyStore.ViewModels.CandyListViewModel
 
 <html>
     <head>
@@ -8,7 +9,10 @@
         <title>Candy Store</title>
     </head>
     <body>
-        @foreach (var candy in Model)
+        @*<h1>@ViewBag.CurrentCategory</h1>*@
+        <h1>@Model.CurrentCategory</h1>
+        @*@foreach (var candy in Model)*@
+        @foreach(var candy in Model.Candies)
         {
             <div>
                 <h2>@candy.Name</h2>
