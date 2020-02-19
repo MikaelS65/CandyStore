@@ -1,14 +1,7 @@
 ﻿@*@model IEnumerable<CandyStore.Models.Candy>*@
-@model CandyStore.ViewModels.CandyListViewModel
+@*@model CandyStore.ViewModels.CandyListViewModel*@
+@model CandyListViewModel
 
-<html>
-    <head>
-        <meta charset="utf-8"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <title>Candy Store</title>
-    </head>
-    <body>
         @*<h1>@ViewBag.CurrentCategory</h1>*@
         <h1>@Model.CurrentCategory</h1>
         @*@foreach (var candy in Model)*@
@@ -20,5 +13,4 @@
                 <h4>@candy.Category.CategoryName</h4>
             </div>
         }
-    </body>
-</html>
+
