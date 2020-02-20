@@ -3,11 +3,25 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">  <!-- Special CSS from Google -->
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />  <!-- Bootstrap CSS -->
+    <script src="~/lib/jquery/jquery.js"></script>  <!-- JQuery -->
+    <script src="~/lib/bootstrap/js/bootstrap.js"></script> <!-- JS in Boorstrap -->
+    <link href="~/content/site.css" rel="stylesheet" /> <!-- Our own CSS -->
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    <div>
-        @RenderBody()
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <p class="lead">
+                    <img src="~/Images/candyshoplogo.png" />
+                </p>
+            </div>
+            <div class="col-md-9">
+                @RenderBody()
+            </div>
+        </div>
     </div>
 </body>
 </html>
