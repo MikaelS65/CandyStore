@@ -7,10 +7,15 @@
         @*@foreach (var candy in Model)*@
         @foreach(var candy in Model.Candies)
         {
-            <div>
-                <h2>@candy.Name</h2>
-                <h3>@candy.Price.ToString("c")</h3>
-                <h4>@candy.Category.CategoryName</h4>
+            <div class="col-sm-4 col-lg-4 col-md-4">
+                <div class="thumbnail">
+                    <img src="@candy.ImageThumbnailUrl" alt="Image"/>
+                    <div class="caption">
+                        <h3 class="pull-right">@candy.Price.ToString("c")</h3>
+                        <h3>@candy.Name</h3>
+                        <p>@candy.Description</p>
+                    </div>
+                </div>
             </div>
         }
 
