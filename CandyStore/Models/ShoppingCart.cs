@@ -37,5 +37,30 @@ namespace CandyStore.Models
                 ShoppingCartId = cartId
             };
         }
+
+        public void AddToCart(Candy candy, int amount)
+        {
+            var shoppingCartItem = _appDbContext.ShoppingCartItems.SingleOrDefault(s =>
+            s.Candy.CandyId == candy.CandyId &&
+            s.ShoppingCartId == ShoppingCartId);
+
+            if(shoppingCartItem == null)
+            {
+                shoppingCartItem = new ShoppingCartItem
+                {
+                    ShoppingCartId = ShoppingCartId,
+                    Candy = candy,
+                    Amount = amount
+                };
+
+                _appDbContext.ShoppingCartItems.Add(shoppingCartItem);
+            }
+            else
+            {
+                shoppingCartItem.Amount++;
+            }
+
+            _appDbContext.SaveChanges();
+        }
     }
 }
