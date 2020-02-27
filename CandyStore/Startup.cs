@@ -33,6 +33,11 @@ namespace CandyStore
             services.AddControllersWithViews();     //Support for MVC
             services.AddScoped<ICategoryRepository, CategoryRepository>();  //Our custom service
             services.AddScoped<ICandyRepository, CandyRepository>();    //Our custom service
+
+            services.AddScoped<ShoppingCart>(sc => ShoppingCart.GetCart(sc));
+
+            services.AddHttpContextAccessor();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +50,9 @@ namespace CandyStore
 
             app.UseHttpsRedirection();      //Redirect to HTTPS
             app.UseStaticFiles();           //Search for "wwwroot"
+
+            app.UseSession();
+
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
