@@ -19,16 +19,44 @@ namespace CandyStore.Controllers
             _categoryRepository = categoryRepository;
         }
 
-        public ViewResult List()
+        public ViewResult List(string category)
         {
-            //ViewBag.CurrentCategory = "Bestsellers";
-            //return View(_candyRepository.GetAllCandy);
+            ////ViewBag.CurrentCategory = "Bestsellers";
+            ////return View(_candyRepository.GetAllCandy);
 
-            var candyListViewModel = new CandyListViewModel();
-            candyListViewModel.Candies = _candyRepository.GetAllCandy;
-            candyListViewModel.CurrentCategory = "BestSellers";
+            //var candyListViewModel = new CandyListViewModel();
+            //candyListViewModel.Candies = _candyRepository.GetAllCandy;
+            //candyListViewModel.CurrentCategory = "BestSellers";
+
+            //return View(candyListViewModel);
+
+            IEnumerable<Candy> candies;
+            string currentCategory;
+
+            if(string.IsNullOrEmpty(category))
+            {
+                candies = _candyRepository.GetAllCandy
+                    .OrderBy(c => c.CandyId);
+
+                currentCategory = "All Candy";
+            }
+            else
+            {
+                candies = _candyRepository.GetAllCandy.Where(c =>
+                    c.Category.CategoryName == category);
+
+                currentCategory = _categoryRepository.GetAllCategories
+                    .FirstOrDefault(c => c.CategoryName == category)?.CategoryName;
+            }
+
+            var candyListViewModel = new CandyListViewModel
+            {
+                Candies = candies,
+                CurrentCategory = currentCategory
+            };
 
             return View(candyListViewModel);
+
         }
 
         public IActionResult Details(int id)
