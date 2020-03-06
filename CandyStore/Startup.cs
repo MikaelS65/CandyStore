@@ -33,8 +33,8 @@ namespace CandyStore
             services.AddControllersWithViews();     //Support for MVC
             services.AddScoped<ICategoryRepository, CategoryRepository>();  //Our custom service
             services.AddScoped<ICandyRepository, CandyRepository>();    //Our custom service
-
             services.AddScoped<ShoppingCart>(sc => ShoppingCart.GetCart(sc));
+            services.AddScoped<IOrderRepository, OrderRepository>();
 
             services.AddHttpContextAccessor();
             services.AddSession();
